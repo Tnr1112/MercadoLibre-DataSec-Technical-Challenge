@@ -13,8 +13,12 @@ def getSeries():
 		if page > data["total_pages"]:
 			break
 
-		series.append(data["data"])
+		series += data["data"]
 
 		page += 1
 
 	return series
+
+def bestInGenre(genre):
+	series = getSeries()
+	filteredSeries = list(filter(lambda x: genre in x["genre"], series))
