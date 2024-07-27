@@ -6,6 +6,13 @@ def main():
 		[1, 1, 0, 0]
 	]
 
+def getMinesIndexes(board):
+	minesIndexes = []
+	for i in range(len(board)):
+		for j in range(len(board[i])):
+			if board[i][j] == 1:
+				minesIndexes.append((i, j))
+
 def copyMatrixAndFillZero(board):
 	rows = len(board)
 	cols = len(board[0] if rows > 0 else 0)
