@@ -19,7 +19,10 @@ def getSeries():
 
 	return series
 
+def filterSeriesByGenre(series, genre):
+	return list(filter(lambda x: genre in x["genre"], series))
+
 def bestInGenre(genre):
 	series = getSeries()
-	filteredSeries = list(filter(lambda x: genre in x["genre"], series))
+	filteredSeries = filterSeriesByGenre(series, genre)
 	return max(filteredSeries, key=lambda x: (x["imdb_rating"], len(x["name"])))
