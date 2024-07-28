@@ -25,4 +25,5 @@ def filterSeriesByGenre(series, genre):
 def bestInGenre(genre):
 	series = getSeries()
 	filteredSeries = filterSeriesByGenre(series, genre)
-	return max(filteredSeries, key=lambda x: (x["imdb_rating"], len(x["name"])))
+	# Obtengo el máximo según el rating de IMDB. Si el rating de IMDB es igual, obtengo el máximo según la longitud del nombre
+	return max(filteredSeries, key=lambda x: (x["imdb_rating"], len(x["name"])))["name"]
