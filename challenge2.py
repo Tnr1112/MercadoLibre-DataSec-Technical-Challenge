@@ -20,7 +20,7 @@ def getSeries():
 	return series
 
 def filterSeriesByGenre(series, genre):
-	return list(filter(lambda x: genre in x["genre"], series))
+	return list(filter(lambda serie: genre in serie["genre"], series))
 
 def getBestInGenre(genre):
 	series = getSeries()
