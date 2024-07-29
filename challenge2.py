@@ -8,6 +8,10 @@ def getSeries():
 
 	while True:
 		response = requests.get(baseUrl, params={"page": page})
+
+		if response.status_code != 200:
+			raise Exception("An error has ocurred while fetching the data from the API")
+
 		data = response.json()
 
 		if page > data["total_pages"]:
