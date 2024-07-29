@@ -19,6 +19,7 @@ def updateNeighbours(board, mineIndex):
 	x, y = mineIndex
 	for i in range(x-1, x+2):
 		for j in range(y-1, y+2):
+			# Verifico estar en el tablero y que la celda no sea una mina
 			if 0 <= i < rows and 0 <= j < cols and board[i][j] != MINE:
 					board[i][j] += 1
 
