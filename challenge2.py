@@ -22,8 +22,17 @@ def getSeries():
 def filterSeriesByGenre(series, genre):
 	return list(filter(lambda x: genre in x["genre"], series))
 
-def bestInGenre(genre):
+def getBestInGenre(genre):
 	series = getSeries()
+	bestSerie = None
 	filteredSeries = filterSeriesByGenre(series, genre)
-	# Obtengo el máximo según el rating de IMDB. Si el rating de IMDB es igual, obtengo el máximo según la longitud del nombre
-	return max(filteredSeries, key=lambda x: (x["imdb_rating"], len(x["name"])))["name"]
+	for filteredSerie in filteredSeries:
+		if bestSerie is None or filteredSerie["imdb_rating"] > bestSerie["imdb_rating"]:
+			bestSerie = filteredSerie
+		elif filteredSerie["imdb_rating"] == bestSerie["imdb_rating"] and filteredSerie['name'] < bestSerie['name']:
+			bestSerie = filteredSerie
+	return bestSerie
+
+def bestInGenre(genre):
+	bestSerie = getBestInGenre(genre)
+	return bestSerie["name"] if bestSerie else None
